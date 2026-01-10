@@ -1,10 +1,33 @@
 <script setup lang="ts">
-// Navigation component skeleton for public layout
-// Placeholder text only - no styling yet (per T020)
+import Menubar from 'primevue/menubar';
+import type { MenuItem } from 'primevue/menuitem';
+
+// Navigation items (home, about, login) per spec clarification
+const items: MenuItem[] = [
+  {
+    label: 'Home',
+    icon: 'pi pi-home',
+    command: () => {
+      window.location.href = '/';
+    }
+  },
+  {
+    label: 'About',
+    icon: 'pi pi-info-circle',
+    command: () => {
+      window.location.href = '/about';
+    }
+  },
+  {
+    label: 'Login',
+    icon: 'pi pi-sign-in',
+    command: () => {
+      window.location.href = '/login';
+    }
+  }
+];
 </script>
 
 <template>
-  <div>
-    Navigation
-  </div>
+  <Menubar :model="items" />
 </template>
