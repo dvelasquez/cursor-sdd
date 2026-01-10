@@ -1,1 +1,18 @@
+/* Configure theme with Instrument Sans font (PrimeVue Aura default) */
+@theme {
+  --font-instrument-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-sans: var(--font-instrument-sans);
+}
+
+/* Import Tailwind CSS (handles layers automatically in v4) */
 @import "tailwindcss";
+
+/* Import tailwindcss-primeui plugin (must come after tailwindcss) */
+@import "tailwindcss-primeui";
+
+/* Apply font to base layer */
+@layer base {
+  body {
+    font-family: var(--font-instrument-sans);
+  }
+}

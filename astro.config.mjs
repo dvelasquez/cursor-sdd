@@ -9,7 +9,7 @@ import node from '@astrojs/node';
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [vue()],
+  integrations: [vue({ appEntrypoint: '/src/pages/_app' })],
 
   vite: {
     plugins: [tailwindcss()]
