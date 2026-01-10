@@ -80,75 +80,75 @@ For PrimeVue integration:
 
 #### Step 2: Create Simple Layout Structure with Placeholders
 
-- [ ] T017 [US1] Create PublicLayout skeleton: create `src/layouts/PublicLayout.astro` with basic HTML structure containing `<header>`, `<main>`, and `<footer>` placeholders (no styling yet)
-- [ ] T018 [US1] Update homepage to use PublicLayout: modify `src/pages/index.astro` to use PublicLayout instead of Layout component
-- [ ] T019 [US1] Verify layout structure: visit homepage, verify header, main, and footer sections are visible in browser (even if unstyled)
+- [x] T017 [US1] Create PublicLayout skeleton: create `src/layouts/PublicLayout.astro` with basic HTML structure containing `<header>`, `<main>`, and `<footer>` placeholders (no styling yet)
+- [x] T018 [US1] Update homepage to use PublicLayout: modify `src/pages/index.astro` to use PublicLayout instead of Layout component
+- [x] T019 [US1] Verify layout structure: visit homepage, verify header, main, and footer sections are visible in browser (even if unstyled)
 
 **Checkpoint**: Basic layout structure in place with header, main, footer sections visible
 
 #### Step 3: Add Header with Navigation Placeholder
 
-- [ ] T020 [US1] Create navigation component skeleton: create `src/components/vue/PublicNav.vue` with a simple div containing placeholder text "Navigation" (no styling yet)
-- [ ] T021 [US1] Add navigation to header: modify `src/layouts/PublicLayout.astro` to include PublicNav component in header with `client:load` directive
-- [ ] T022 [US1] Verify navigation appears: visit homepage, verify "Navigation" placeholder text appears in header section
+- [x] T020 [US1] Create navigation component skeleton: create `src/components/vue/PublicNav.vue` with a simple div containing placeholder text "Navigation" (no styling yet)
+- [x] T021 [US1] Add navigation to header: modify `src/layouts/PublicLayout.astro` to include PublicNav component in header with `client:load` directive
+- [x] T022 [US1] Verify navigation appears: visit homepage, verify "Navigation" placeholder text appears in header section
 
 **Checkpoint**: Navigation placeholder visible in header
 
 #### Step 4: Style Navigation Bar for Public
 
-- [ ] T023 [US1] Implement navigation with PrimeVue Menubar: modify `src/components/vue/PublicNav.vue` to use PrimeVue Menubar component with navigation items (home, about, login) per spec clarification
-- [ ] T024 [US1] Style navigation with Tailwind: add Tailwind utility classes to PublicNav component using `tailwindcss-primeui` utilities (e.g., `bg-primary`, `text-primary-contrast`, `rounded-border`)
-- [ ] T025 [US1] Verify styled navigation: visit homepage, verify navigation bar displays with home, about, login links, styled correctly, and responsive behavior works
+- [x] T023 [US1] Implement navigation with PrimeVue Menubar: modify `src/components/vue/PublicNav.vue` to use PrimeVue Menubar component with navigation items (home, about, login) per spec clarification
+- [x] T024 [US1] Style navigation with Tailwind: add Tailwind utility classes to PublicNav component using `tailwindcss-primeui` utilities (e.g., `bg-primary`, `text-primary-contrast`, `rounded-border`)
+- [x] T025 [US1] Verify styled navigation: visit homepage, verify navigation bar displays with home, about, login links, styled correctly, and responsive behavior works
 
 **Checkpoint**: Styled navigation bar visible and functional with PrimeVue components
 
 #### Step 5: Create Footer
 
-- [ ] T026 [US1] Create footer component: create `src/components/Footer.astro` (Astro component) with placeholder footer content "Footer content"
-- [ ] T027 [US1] Add footer to PublicLayout: modify `src/layouts/PublicLayout.astro` to include Footer component in footer section
-- [ ] T028 [US1] Style footer with Tailwind: add Tailwind utility classes to Footer component for basic styling (padding, background, text alignment)
-- [ ] T029 [US1] Verify footer renders: visit homepage, verify footer appears at bottom of page with appropriate styling
+- [x] T026 [US1] Create footer component: create `src/components/Footer.astro` (Astro component) with placeholder footer content "Footer content"
+- [x] T027 [US1] Add footer to PublicLayout: modify `src/layouts/PublicLayout.astro` to include Footer component in footer section
+- [x] T028 [US1] Style footer with Tailwind: add Tailwind utility classes to Footer component for basic styling (padding, background, text alignment)
+- [x] T029 [US1] Verify footer renders: visit homepage, verify footer appears at bottom of page with appropriate styling
 
 **Checkpoint**: Footer visible and styled in layout
 
 #### Step 6: Style Header Section
 
-- [ ] T030 [US1] Style header container: modify `src/layouts/PublicLayout.astro` header section with Tailwind classes for proper spacing, background, and alignment
-- [ ] T031 [US1] Verify header styling: visit homepage, verify header has appropriate styling and navigation is properly positioned
+- [x] T030 [US1] Style header container: modify `src/layouts/PublicLayout.astro` header section with Tailwind classes for proper spacing, background, and alignment
+- [x] T031 [US1] Verify header styling: visit homepage, verify header has appropriate styling and navigation is properly positioned
 
 **Checkpoint**: Header styled and positioned correctly
 
 #### Step 7: Style Main Content Area
 
-- [ ] T032 [US1] Style main content area: modify `src/layouts/PublicLayout.astro` main section with Tailwind classes for proper padding, max-width, and responsive behavior
-- [ ] T033 [US1] Verify main content area: visit homepage, verify main content area has appropriate styling and responsive behavior
+- [x] T032 [US1] Style main content area: modify `src/layouts/PublicLayout.astro` main section with Tailwind classes for proper padding, max-width, and responsive behavior
+- [x] T033 [US1] Verify main content area: visit homepage, verify main content area has appropriate styling and responsive behavior
 
 **Checkpoint**: Main content area styled and responsive
 
 #### Step 8: Complete Public Layout Integration
 
-- [ ] T034 [US1] Ensure layout consistency: verify PublicLayout provides consistent structure (header, navigation, main, footer) across all sections
-- [ ] T035 [US1] Verify responsive design: test PublicLayout at different screen sizes (320px, 768px, 1024px, 1920px) using browser dev tools, verify layout adapts correctly per SC-003
+- [x] T034 [US1] Ensure layout consistency: verify PublicLayout provides consistent structure (header, navigation, main, footer) across all sections
+- [x] T035 [US1] Verify responsive design: test PublicLayout at different screen sizes (320px, 768px, 1024px, 1920px) using browser dev tools, verify layout adapts correctly per SC-003
 
 **Checkpoint**: Public layout complete with all sections styled and responsive
 
 #### Step 9: Create Example Public Page
 
-- [ ] T036 [US1] Create about page: create `src/pages/about.astro` using PublicLayout with sample content "About Us" heading and paragraph
-- [ ] T037 [US1] Verify navigation works: visit homepage, click "About" link in navigation, verify about page loads with same PublicLayout structure
-- [ ] T038 [US1] Verify layout consistency: visit both homepage and about page, verify layout structure is identical across pages per SC-001
+- [x] T036 [US1] Create about page: create `src/pages/about.astro` using PublicLayout with sample content "About Us" heading and paragraph
+- [x] T037 [US1] Verify navigation works: visit homepage, click "About" link in navigation, verify about page loads with same PublicLayout structure
+- [x] T038 [US1] Verify layout consistency: visit both homepage and about page, verify layout structure is identical across pages per SC-001
 
 **Checkpoint**: Example public page created and navigation functional
 
 ### E2E Validation for User Story 1 (MANDATORY per constitution) ⚠️
 
-- [ ] T039 [US1] Run static analysis: run `pnpm astro check` and verify linting and type checking pass
-- [ ] T040 [US1] Build application: run `pnpm build` and verify build completes without errors
-- [ ] T041 [US1] Start application and load pages: run `pnpm dev`, visit homepage at `http://localhost:4321`, verify page loads without errors
-- [ ] T042 [US1] Verify no console errors: open browser dev tools console, verify no JavaScript errors, runtime errors, or warnings
-- [ ] T043 [US1] Test complete user journey: visit homepage → click navigation links → verify page transitions work → verify layout remains consistent
-- [ ] T044 [US1] Verify responsive behavior: test at 320px, 768px, 1024px, 2560px widths, verify layout adapts correctly per SC-003
-- [ ] T045 [US1] Verify acceptance criteria: confirm all acceptance scenarios from spec are met (header, navigation, footer, content area render correctly)
+- [x] T039 [US1] Run static analysis: run `pnpm astro check` and verify linting and type checking pass
+- [x] T040 [US1] Build application: run `pnpm build` and verify build completes without errors
+- [x] T041 [US1] Start application and load pages: run `pnpm dev`, visit homepage at `http://localhost:4321`, verify page loads without errors
+- [x] T042 [US1] Verify no console errors: open browser dev tools console, verify no JavaScript errors, runtime errors, or warnings
+- [x] T043 [US1] Test complete user journey: visit homepage → click navigation links → verify page transitions work → verify layout remains consistent
+- [x] T044 [US1] Verify responsive behavior: test at 320px, 768px, 1024px, 2560px widths, verify layout adapts correctly per SC-003
+- [x] T045 [US1] Verify acceptance criteria: confirm all acceptance scenarios from spec are met (header, navigation, footer, content area render correctly)
 
 **Checkpoint**: User Story 1 complete, validated end-to-end, independently testable - Public layout foundation established
 
