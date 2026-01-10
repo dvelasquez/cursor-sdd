@@ -12,7 +12,10 @@ export default defineConfig({
   integrations: [vue({ appEntrypoint: '/src/pages/_app' })],
 
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
+    optimizeDeps: {
+      include: ['primevue/card', 'primevue/button', 'primevue/badge', 'primevue/chip', 'primevue/tag']
+    }
   },
 
   adapter: node({
