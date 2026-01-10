@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import PrivateNav from '../components/vue/PrivateNav.vue';
 import UserProfile from '../components/vue/UserProfile.vue';
 import Footer from '../components/Footer.astro';
 import { mockUserSession } from '../lib/fixtures/mock-user-session';
@@ -19,12 +20,16 @@ import { mockUserSession } from '../lib/fixtures/mock-user-session';
 		<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
 	</head>
 	<body class="min-h-screen flex flex-col bg-gray-900 text-white">
-		<header class="w-full sticky top-0 z-10">
-			<div class="w-full bg-gray-800 border-b border-gray-700 px-4 py-3 flex items-center justify-between">
-				<!-- Navigation will go here (PrivateNav will be added in Step 5) -->
-				<div class="flex-1"></div>
+		<header class="w-full sticky top-0 z-10 bg-gray-800 border-b border-gray-700">
+			<div class="w-full flex items-center justify-between px-4 py-3">
+				<!-- PrivateNav positioned left (flex-1 to take available space) -->
+				<div class="flex-1">
+					<PrivateNav client:load />
+				</div>
 				<!-- UserProfile positioned top-right -->
-				<UserProfile userSession={mockUserSession} client:load />
+				<div class="ml-4">
+					<UserProfile userSession={mockUserSession} client:load />
+				</div>
 			</div>
 		</header>
 		<main class="flex-1 w-full max-w-7xl mx-auto px-4 py-8 md:px-6 md:py-12 lg:px-8 lg:py-16">
