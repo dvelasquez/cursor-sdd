@@ -1,88 +1,75 @@
 <script setup lang="ts">
-import Menubar from 'primevue/menubar';
-import type { MenuItem } from 'primevue/menuitem';
+import { ref } from 'vue';
 
 // Navigation items (home, about, login) per spec clarification
-const items: MenuItem[] = [
-  {
-    label: 'Home',
-    icon: 'pi pi-home',
-    command: () => {
-      window.location.href = '/';
-    }
-  },
-  {
-    label: 'About',
-    icon: 'pi pi-info-circle',
-    command: () => {
-      window.location.href = '/about';
-    }
-  },
-  {
-    label: 'Login',
-    icon: 'pi pi-sign-in',
-    command: () => {
-      window.location.href = '/login';
-    }
-  }
+interface NavItem {
+  label: string;
+  href: string;
+  icon: string;
+}
+
+const navItems: NavItem[] = [
+  { label: 'Home', href: '/', icon: 'pi pi-home' },
+  { label: 'About', href: '/about', icon: 'pi pi-info-circle' },
+  { label: 'Login', href: '/login', icon: 'pi pi-sign-in' },
 ];
+
+const isMobileMenuOpen = ref(false);
+
+function navigate(href: string) {
+  window.location.href = href;
+}
+
+function toggleMobileMenu() {
+  isMobileMenuOpen.value = !isMobileMenuOpen.value;
+}
 </script>
 
 <template>
   <nav class="w-full bg-gray-800 border-b border-gray-700">
-    <Menubar 
-      :model="items" 
-      class="bg-transparent border-none rounded-none w-full px-4 py-3 nav-menubar-custom"
+    <div class="flex items-center justify-between px-4 py-3">
+      <!-- Desktop: Horizontal menu items -->
+      <ul class="hidden md:flex items-center gap-1 list-none m-0 p-0">
+        <li v-for="item in navItems" :key="item.href" class="relative">
+          <a
+            :href="item.href"
+            class="flex items-center gap-2 px-4 py-2 rounded-lg text-gray-300 hover:bg-gray-700 hover:text-white transition-colors duration-200 cursor-pointer font-medium no-underline"
+            @click.prevent="navigate(item.href)"
+          >
+            <i :class="item.icon" class="text-sm" />
+            <span>{{ item.label }}</span>
+          </a>
+        </li>
+      </ul>
+
+      <!-- Mobile: Hamburger button (will show overlay menu on click) -->
+      <button
+        type="button"
+        class="md:hidden flex items-center justify-center w-10 h-10 rounded-lg text-gray-300 hover:bg-gray-700 hover:text-white transition-colors border-none bg-transparent"
+        aria-label="Toggle navigation menu"
+        @click="toggleMobileMenu"
+      >
+        <i class="pi pi-bars text-lg" />
+      </button>
+    </div>
+
+    <!-- Mobile: Overlay menu -->
+    <div
+      v-if="isMobileMenuOpen"
+      class="md:hidden bg-gray-800 border-t border-gray-700"
     >
-      <template #item="{ item, props: itemProps }">
-        <a
-          v-bind="itemProps.action"
-          class="flex items-center gap-2 px-4 py-2 rounded-lg text-gray-300 hover:bg-gray-700 hover:text-white transition-colors duration-200 cursor-pointer font-medium no-underline"
-          :class="{ 'bg-gray-700 text-white': itemProps.active }"
-          @click="item.command && item.command()"
-        >
-          <i v-if="item.icon" :class="item.icon" class="text-sm" />
-          <span>{{ item.label }}</span>
-        </a>
-      </template>
-    </Menubar>
+      <ul class="flex flex-col list-none m-0 p-0">
+        <li v-for="item in navItems" :key="item.href">
+          <a
+            :href="item.href"
+            class="flex items-center gap-2 px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white transition-colors duration-200 cursor-pointer font-medium no-underline border-b border-gray-700 last:border-b-0"
+            @click.prevent="navigate(item.href); isMobileMenuOpen = false"
+          >
+            <i :class="item.icon" class="text-sm" />
+            <span>{{ item.label }}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
   </nav>
 </template>
-
-<style scoped>
-/* Style menu list container */
-:deep(.nav-menubar-custom .p-menubar-list) {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-/* Style mobile menu button - hide on desktop */
-@media (min-width: 768px) {
-  :deep(.nav-menubar-custom .p-menubar-button) {
-    display: none;
-  }
-}
-
-/* Style mobile menu button on mobile */
-:deep(.nav-menubar-custom .p-menubar-button) {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 0.5rem;
-  color: rgb(209 213 219);
-  background: transparent;
-  border: none;
-  transition: background-color 0.2s, color 0.2s;
-}
-
-:deep(.nav-menubar-custom .p-menubar-button:hover) {
-  background-color: rgb(55 65 81);
-  color: white;
-}
-</style>
