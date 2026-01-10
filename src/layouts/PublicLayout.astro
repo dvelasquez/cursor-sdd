@@ -17,11 +17,11 @@ import Footer from '../components/Footer.astro';
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
 	</head>
-	<body>
-		<header>
+	<body class="min-h-screen flex flex-col bg-gray-900 text-white">
+		<header class="w-full sticky top-0 z-10">
 			<PublicNav client:load />
 		</header>
-		<main>
+		<main class="flex-1">
 			<slot />
 		</main>
 		<Footer />
