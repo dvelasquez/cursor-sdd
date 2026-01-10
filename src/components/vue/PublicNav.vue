@@ -29,5 +29,10 @@ const items: MenuItem[] = [
 </script>
 
 <template>
-  <Menubar :model="items" />
+  <div class="w-full bg-gray-800 border-b border-gray-700">
+    <Menubar 
+      :model="items" 
+      class="bg-transparent border-none rounded-none w-full px-4 py-3"
+    />
+  </div>
 </template>
