@@ -1,0 +1,29 @@
+# cursor-sdd Development Guidelines
+
+Auto-generated from all feature plans. Last updated: 2026-01-10
+
+## Active Technologies
+
+- JavaScript/TypeScript (TypeScript with strict mode, per constitution) (002-vue-prime-layouts)
+
+## Project Structure
+
+```text
+src/
+tests/
+```
+
+## Commands
+
+npm test && npm run lint
+
+## Code Style
+
+JavaScript/TypeScript (TypeScript with strict mode, per constitution): Follow standard conventions
+
+## Recent Changes
+
+- 002-vue-prime-layouts: Added JavaScript/TypeScript (TypeScript with strict mode, per constitution)
+
+<!-- MANUAL ADDITIONS START -->
+<!-- MANUAL ADDITIONS END -->

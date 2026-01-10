@@ -55,8 +55,8 @@ For PrimeVue integration:
 
 - [x] T010 Step 1: Verify PrimeVue installation succeeds - start dev server with `pnpm dev` and check browser console for errors
 - [x] T011 Step 2: Test basic PrimeVue component rendering - create simple test component and verify it renders in browser
-- [ ] T012 Step 3: Verify Tailwind utilities work with PrimeVue - test `bg-primary` and `rounded-border` utilities in browser
-- [ ] T013 Step 4: Refine configuration if needed based on browser verification
+- [x] T012 Step 3: Verify Tailwind utilities work with PrimeVue - test `bg-primary` and `rounded-border` utilities in browser
+- [x] T013 Step 4: Refine configuration if needed based on browser verification
 
 **Checkpoint**: Foundation ready and validated - PrimeVue configured and rendering in browser - user story implementation can now begin
 
@@ -72,9 +72,9 @@ For PrimeVue integration:
 
 #### Step 1: Basic Vue Component Integration on Homepage
 
-- [ ] T014 [US1] Create simple Vue component: create `src/components/vue/TestButton.vue` with a PrimeVue Button component that displays "Click Me"
-- [ ] T015 [US1] Update homepage with Vue component: modify `src/pages/index.astro` to import and display TestButton with `client:load` directive, replacing Welcome component
-- [ ] T016 [US1] Verify component renders: start dev server, visit homepage at `http://localhost:4321`, verify PrimeVue button renders and responds to clicks
+- [x] T014 [US1] Create simple Vue component: create `src/components/vue/TestButton.vue` with a PrimeVue Button component that displays "Click Me"
+- [x] T015 [US1] Update homepage with Vue component: modify `src/pages/index.astro` to import and display TestButton with `client:load` directive, replacing Welcome component
+- [x] T016 [US1] Verify component renders: start dev server, visit homepage at `http://localhost:4321`, verify PrimeVue button renders and responds to clicks
 
 **Checkpoint**: PrimeVue component successfully integrated and visible on homepage
 
