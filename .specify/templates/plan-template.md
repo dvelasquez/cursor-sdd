@@ -15,23 +15,45 @@
   ACTION REQUIRED: Replace the content in this section with the technical details
   for the project. The structure here is presented in advisory capacity to guide
   the iteration process.
+  
+  NOTE: Technology stack is defined in constitution (.specify/memory/constitution.md):
+  - Language: JavaScript/TypeScript
+  - Runtime: Node.js
+  - Framework: Astro
+  - UI Components: Vue.js (Vue 3)
+  - Styling: Tailwind CSS
+  - Component Library: PrimeVue
 -->
 
-**Language/Version**: [e.g., Python 3.11, Swift 5.9, Rust 1.75 or NEEDS CLARIFICATION]  
-**Primary Dependencies**: [e.g., FastAPI, UIKit, LLVM or NEEDS CLARIFICATION]  
-**Storage**: [if applicable, e.g., PostgreSQL, CoreData, files or N/A]  
-**Testing**: [e.g., pytest, XCTest, cargo test or NEEDS CLARIFICATION]  
-**Target Platform**: [e.g., Linux server, iOS 15+, WASM or NEEDS CLARIFICATION]
-**Project Type**: [single/web/mobile - determines source structure]  
-**Performance Goals**: [domain-specific, e.g., 1000 req/s, 10k lines/sec, 60 fps or NEEDS CLARIFICATION]  
-**Constraints**: [domain-specific, e.g., <200ms p95, <100MB memory, offline-capable or NEEDS CLARIFICATION]  
-**Scale/Scope**: [domain-specific, e.g., 10k users, 1M LOC, 50 screens or NEEDS CLARIFICATION]
+**Language/Version**: JavaScript/TypeScript (per constitution)  
+**Runtime**: Node.js (per constitution)  
+**Framework**: Astro (per constitution)  
+**UI Components**: Vue.js (Vue 3 composition API, per constitution)  
+**Styling**: Tailwind CSS + PrimeVue (per constitution)  
+**Storage**: [if applicable, e.g., PostgreSQL, files, or N/A]  
+**Testing**: [e.g., Vitest, Playwright, or NEEDS CLARIFICATION - per constitution: progressive E2E validation required]  
+**Target Platform**: [e.g., Web browsers, Node.js server, or NEEDS CLARIFICATION]  
+**Project Type**: Web application (Astro framework, per constitution)  
+**Performance Goals**: [domain-specific, e.g., <2s page load, 60 fps, or NEEDS CLARIFICATION]  
+**Constraints**: [domain-specific, e.g., <200ms p95, <100MB memory, offline-capable, or NEEDS CLARIFICATION]  
+**Scale/Scope**: [domain-specific, e.g., 10k users, 50 screens, or NEEDS CLARIFICATION]
 
 ## Constitution Check
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+Verify compliance with all constitution principles:
+
+- **Type Safety**: All code will use TypeScript with strict mode. Runtime validation (Zod) only at boundaries.
+- **Code Quality**: Linting and type checking will pass before any commit.
+- **Testing Discipline**: Progressive testing workflow MUST be followed:
+  - Static analysis (lint, typecheck) passes
+  - Application loads in browser without errors after each change
+  - New infrastructure (DB, services) follows progressive integration: connection → test data → UI display → refinement
+  - Complete end-to-end validation in running application for all features
+- **Incremental Delivery**: Features broken into independently testable increments
+
+[Additional gates determined based on constitution file]
 
 ## Project Structure
 

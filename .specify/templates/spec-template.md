@@ -15,9 +15,15 @@
   Assign priorities (P1, P2, P3, etc.) to each story, where P1 is the most critical.
   Think of each story as a standalone slice of functionality that can be:
   - Developed independently
-  - Tested independently
+  - Tested independently (including E2E validation per constitution)
   - Deployed independently
   - Demonstrated to users independently
+  
+  Per constitution, ALL implementations MUST follow progressive testing:
+  1. Static analysis (lint, typecheck) passes
+  2. Application loads in browser without errors after each change
+  3. For new infrastructure: connection test → test data → UI display → refinement
+  4. Complete end-to-end validation in running application for all features
 -->
 
 ### User Story 1 - [Brief Title] (Priority: P1)

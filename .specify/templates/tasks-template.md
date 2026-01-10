@@ -8,7 +8,11 @@ description: "Task list template for feature implementation"
 **Input**: Design documents from `/specs/[###-feature-name]/`
 **Prerequisites**: plan.md (required), spec.md (required for user stories), research.md, data-model.md, contracts/
 
-**Tests**: The examples below include test tasks. Tests are OPTIONAL - only include them if explicitly requested in the feature specification.
+**Testing**: Per constitution, ALL implementations MUST follow progressive testing discipline:
+1. Static analysis (lint, typecheck) MUST pass
+2. E2E validation: Application MUST load in browser and function without errors
+3. Progressive integration: For new infrastructure (DB, services), follow: connection test → test data → UI display → refinement
+4. Unit/integration tests are OPTIONAL but encouraged - only include if explicitly requested in the feature specification.
 
 **Organization**: Tasks are grouped by user story to enable independent implementation and testing of each story.
 
@@ -69,7 +73,16 @@ Examples of foundational tasks (adjust based on your project):
 - [ ] T008 Configure error handling and logging infrastructure
 - [ ] T009 Setup environment configuration management
 
-**Checkpoint**: Foundation ready - user story implementation can now begin in parallel
+### Progressive Integration Validation for Foundation (MANDATORY per constitution) ⚠️
+
+For each infrastructure component added (e.g., database, external service):
+
+- [ ] Step 1: Verify connection/initialization succeeds (connection test, health check)
+- [ ] Step 2: Add minimal dummy/test data to validate data flow
+- [ ] Step 3: Display data in UI (even as raw JSON string initially) to confirm end-to-end pipeline
+- [ ] Step 4: Refine presentation only after confirming data flow works correctly
+
+**Checkpoint**: Foundation ready and validated - user story implementation can now begin in parallel
 
 ---
 
@@ -79,7 +92,7 @@ Examples of foundational tasks (adjust based on your project):
 
 **Independent Test**: [How to verify this story works on its own]
 
-### Tests for User Story 1 (OPTIONAL - only if tests requested) ⚠️
+### Unit/Integration Tests for User Story 1 (OPTIONAL - only if tests requested) ⚠️
 
 > **NOTE: Write these tests FIRST, ensure they FAIL before implementation**
 
@@ -95,7 +108,18 @@ Examples of foundational tasks (adjust based on your project):
 - [ ] T016 [US1] Add validation and error handling
 - [ ] T017 [US1] Add logging for user story 1 operations
 
-**Checkpoint**: At this point, User Story 1 should be fully functional and testable independently
+### E2E Validation for User Story 1 (MANDATORY per constitution) ⚠️
+
+> **NOTE: These validation steps MUST be completed before marking story complete**
+
+- [ ] T018 [US1] Run static analysis: linting and type checking pass
+- [ ] T019 [US1] Build application successfully (no build errors)
+- [ ] T020 [US1] Start application and load affected pages in browser
+- [ ] T021 [US1] Verify no console errors, runtime errors, or visible breakages
+- [ ] T022 [US1] Test complete user journey end-to-end in running application
+- [ ] T023 [US1] Verify feature functions as intended and matches acceptance criteria
+
+**Checkpoint**: At this point, User Story 1 should be fully functional, validated end-to-end, and independently testable
 
 ---
 
@@ -105,19 +129,28 @@ Examples of foundational tasks (adjust based on your project):
 
 **Independent Test**: [How to verify this story works on its own]
 
-### Tests for User Story 2 (OPTIONAL - only if tests requested) ⚠️
+### Unit/Integration Tests for User Story 2 (OPTIONAL - only if tests requested) ⚠️
 
-- [ ] T018 [P] [US2] Contract test for [endpoint] in tests/contract/test_[name].py
-- [ ] T019 [P] [US2] Integration test for [user journey] in tests/integration/test_[name].py
+- [ ] T024 [P] [US2] Contract test for [endpoint] in tests/contract/test_[name].py
+- [ ] T025 [P] [US2] Integration test for [user journey] in tests/integration/test_[name].py
 
 ### Implementation for User Story 2
 
-- [ ] T020 [P] [US2] Create [Entity] model in src/models/[entity].py
-- [ ] T021 [US2] Implement [Service] in src/services/[service].py
-- [ ] T022 [US2] Implement [endpoint/feature] in src/[location]/[file].py
-- [ ] T023 [US2] Integrate with User Story 1 components (if needed)
+- [ ] T026 [P] [US2] Create [Entity] model in src/models/[entity].py
+- [ ] T027 [US2] Implement [Service] in src/services/[service].py
+- [ ] T028 [US2] Implement [endpoint/feature] in src/[location]/[file].py
+- [ ] T029 [US2] Integrate with User Story 1 components (if needed)
 
-**Checkpoint**: At this point, User Stories 1 AND 2 should both work independently
+### E2E Validation for User Story 2 (MANDATORY per constitution) ⚠️
+
+- [ ] T030 [US2] Run static analysis: linting and type checking pass
+- [ ] T031 [US2] Build application successfully (no build errors)
+- [ ] T032 [US2] Start application and load affected pages in browser
+- [ ] T033 [US2] Verify no console errors, runtime errors, or visible breakages
+- [ ] T034 [US2] Test complete user journey end-to-end in running application
+- [ ] T035 [US2] Verify feature functions as intended and matches acceptance criteria
+
+**Checkpoint**: At this point, User Stories 1 AND 2 should both work independently and be validated end-to-end
 
 ---
 
@@ -127,18 +160,27 @@ Examples of foundational tasks (adjust based on your project):
 
 **Independent Test**: [How to verify this story works on its own]
 
-### Tests for User Story 3 (OPTIONAL - only if tests requested) ⚠️
+### Unit/Integration Tests for User Story 3 (OPTIONAL - only if tests requested) ⚠️
 
-- [ ] T024 [P] [US3] Contract test for [endpoint] in tests/contract/test_[name].py
-- [ ] T025 [P] [US3] Integration test for [user journey] in tests/integration/test_[name].py
+- [ ] T036 [P] [US3] Contract test for [endpoint] in tests/contract/test_[name].py
+- [ ] T037 [P] [US3] Integration test for [user journey] in tests/integration/test_[name].py
 
 ### Implementation for User Story 3
 
-- [ ] T026 [P] [US3] Create [Entity] model in src/models/[entity].py
-- [ ] T027 [US3] Implement [Service] in src/services/[service].py
-- [ ] T028 [US3] Implement [endpoint/feature] in src/[location]/[file].py
+- [ ] T038 [P] [US3] Create [Entity] model in src/models/[entity].py
+- [ ] T039 [US3] Implement [Service] in src/services/[service].py
+- [ ] T040 [US3] Implement [endpoint/feature] in src/[location]/[file].py
 
-**Checkpoint**: All user stories should now be independently functional
+### E2E Validation for User Story 3 (MANDATORY per constitution) ⚠️
+
+- [ ] T041 [US3] Run static analysis: linting and type checking pass
+- [ ] T042 [US3] Build application successfully (no build errors)
+- [ ] T043 [US3] Start application and load affected pages in browser
+- [ ] T044 [US3] Verify no console errors, runtime errors, or visible breakages
+- [ ] T045 [US3] Test complete user journey end-to-end in running application
+- [ ] T046 [US3] Verify feature functions as intended and matches acceptance criteria
+
+**Checkpoint**: All user stories should now be independently functional and validated end-to-end
 
 ---
 
@@ -178,11 +220,13 @@ Examples of foundational tasks (adjust based on your project):
 
 ### Within Each User Story
 
-- Tests (if included) MUST be written and FAIL before implementation
+- Unit/integration tests (if included) MUST be written and FAIL before implementation
+- Static analysis (lint, typecheck) MUST pass before implementation
 - Models before services
 - Services before endpoints
 - Core implementation before integration
-- Story complete before moving to next priority
+- E2E validation MUST complete before marking story complete (see E2E Validation sections)
+- Story complete (including E2E validation) before moving to next priority
 
 ### Parallel Opportunities
 
@@ -214,18 +258,18 @@ Task: "Create [Entity2] model in src/models/[entity2].py"
 ### MVP First (User Story 1 Only)
 
 1. Complete Phase 1: Setup
-2. Complete Phase 2: Foundational (CRITICAL - blocks all stories)
-3. Complete Phase 3: User Story 1
-4. **STOP and VALIDATE**: Test User Story 1 independently
+2. Complete Phase 2: Foundational (CRITICAL - blocks all stories), including progressive integration validation
+3. Complete Phase 3: User Story 1 (implementation + E2E validation)
+4. **STOP and VALIDATE**: Verify User Story 1 end-to-end (static analysis passes, app loads, no errors, feature works in browser)
 5. Deploy/demo if ready
 
 ### Incremental Delivery
 
-1. Complete Setup + Foundational → Foundation ready
-2. Add User Story 1 → Test independently → Deploy/Demo (MVP!)
-3. Add User Story 2 → Test independently → Deploy/Demo
-4. Add User Story 3 → Test independently → Deploy/Demo
-5. Each story adds value without breaking previous stories
+1. Complete Setup + Foundational (with progressive integration validation) → Foundation ready and validated
+2. Add User Story 1 → E2E validation → Deploy/Demo (MVP!)
+3. Add User Story 2 → E2E validation → Deploy/Demo
+4. Add User Story 3 → E2E validation → Deploy/Demo
+5. Each story adds value without breaking previous stories (verified through E2E validation)
 
 ### Parallel Team Strategy
 
