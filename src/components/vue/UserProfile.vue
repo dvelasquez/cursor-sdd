@@ -9,10 +9,23 @@ interface UserProfileProps {
 
 const props = defineProps<UserProfileProps>();
 
+// Define emits for logout event
+const emit = defineEmits<{
+  logout: [];
+}>();
+
 // Display avatar image if available, otherwise use initial from label prop
 const avatarImage = props.userSession.avatar;
 const avatarLabel = props.userSession.initial || '?';
 const displayName = props.userSession.username || props.userSession.email || 'User';
+
+// Handle logout button click - emit logout event and redirect to homepage (mock behavior per T063)
+function handleLogout() {
+  emit('logout');
+  // Mock behavior: redirect to homepage (per T063)
+  // In a real app, the layout would handle the logout event and perform session cleanup
+  window.location.href = '/';
+}
 </script>
 
 <template>
@@ -39,10 +52,11 @@ const displayName = props.userSession.username || props.userSession.email || 'Us
       <span class="text-white text-sm font-medium truncate">{{ displayName }}</span>
     </div>
     
-    <!-- Logout button (no functionality yet per T051) -->
+    <!-- Logout button - emits logout event on click (per T062) -->
     <Button
       label="Logout"
       class="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex-shrink-0"
+      @click="handleLogout"
     />
   </div>
 </template>
