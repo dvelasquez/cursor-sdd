@@ -1,8 +1,8 @@
 /**
  * TypeScript Declaration File
- * 
+ *
  * Barrel export for all contract types
- * 
+ *
  * Feature: 002-vue-prime-layouts
  * Date: 2026-01-10
  */

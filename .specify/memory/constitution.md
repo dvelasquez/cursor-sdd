@@ -16,15 +16,19 @@ Follow-up: None - all templates remain compatible and aligned with technology st
 ## Core Principles
 
 ### I. Type Safety & Static Analysis
+
 Code MUST pass type checking before integration. TypeScript strict mode is required. All public APIs MUST have explicit type definitions. Runtime validation (via Zod or similar) is used at system boundaries only; domain logic uses pure TypeScript interfaces.
 
 ### II. Code Quality Gates
+
 All code MUST pass linting and formatting checks before commit. ESLint and Prettier configurations are enforced. Code reviews MUST verify lint/type compliance in addition to functional correctness.
 
 ### III. Observable & Testable Design
+
 Functions with >2 parameters MUST use named object parameters (RO-RO pattern). Async operations MUST use `Promise.allSettled` for parallel I/O; rejected results MUST be logged or returned in a `partialErrors` array. Errors are for panic states; anticipated failures return typed Result objects or null.
 
 ### IV. Progressive Testing Discipline (NON-NEGOTIABLE)
+
 Every change MUST be validated end-to-end through progressive testing. The testing workflow is mandatory and sequential:
 
 1. **Static Analysis**: Run linting and type checking tools to ensure code quality standards are met.
@@ -44,6 +48,7 @@ Every change MUST be validated end-to-end through progressive testing. The testi
 **Rationale**: Early validation catches integration issues before they compound. Progressive testing ensures each layer works before adding complexity. Visual verification in the browser catches issues that static analysis and unit tests miss, especially for web applications where rendering, routing, and client-server interactions are critical.
 
 ### V. Incremental Delivery
+
 Features MUST be delivered as independently testable increments. Each increment MUST be functional and demonstrable on its own. Complex features are broken into smaller stories that can each be validated end-to-end before integration.
 
 ## Technology Stack
@@ -64,6 +69,7 @@ All new features MUST use these technologies unless explicitly justified as exce
 ## Development Workflow
 
 All PRs and feature branches MUST demonstrate compliance with testing discipline:
+
 - Type checking passes (`astro check` or `tsc --noEmit`)
 - Linting passes (`eslint .` or equivalent)
 - Application builds successfully (`npm run build` or `astro build`)
@@ -77,6 +83,7 @@ Code complexity MUST be justified. Simpler alternatives are preferred unless com
 ## Governance
 
 This constitution supersedes all other development practices. Amendments require:
+
 - Documentation of the change rationale
 - Version bump following semantic versioning (MAJOR.MINOR.PATCH)
 - Update to affected templates and guidance documents

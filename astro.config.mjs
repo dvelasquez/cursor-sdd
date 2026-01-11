@@ -14,11 +14,17 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
     optimizeDeps: {
-      include: ['primevue/card', 'primevue/button', 'primevue/badge', 'primevue/chip', 'primevue/tag']
-    }
+      include: [
+        'primevue/card',
+        'primevue/button',
+        'primevue/badge',
+        'primevue/chip',
+        'primevue/tag',
+      ],
+    },
   },
 
   adapter: node({
-    mode: 'standalone'
-  })
+    mode: 'standalone',
+  }),
 });

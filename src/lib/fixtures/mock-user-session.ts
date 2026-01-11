@@ -1,6 +1,6 @@
 /**
  * Mock User Session Fixture
- * 
+ *
  * Simulated authentication state data for UI development and layout testing.
  * Per data-model.md: id, username, email, avatar (null), initial ("JD"), isAuthenticated (true)
  */

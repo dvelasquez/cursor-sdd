@@ -1,6 +1,5 @@
 ---
-
-description: "Task list template for feature implementation"
+description: 'Task list template for feature implementation'
 ---
 
 # Tasks: [FEATURE NAME]
@@ -9,6 +8,7 @@ description: "Task list template for feature implementation"
 **Prerequisites**: plan.md (required), spec.md (required for user stories), research.md, data-model.md, contracts/
 
 **Testing**: Per constitution, ALL implementations MUST follow progressive testing discipline:
+
 1. Static analysis (lint, typecheck) MUST pass
 2. E2E validation: Application MUST load in browser and function without errors
 3. Progressive integration: For new infrastructure (DB, services), follow: connection test → test data → UI display → refinement
@@ -29,21 +29,21 @@ description: "Task list template for feature implementation"
 - **Mobile**: `api/src/`, `ios/src/` or `android/src/`
 - Paths shown below assume single project - adjust based on plan.md structure
 
-<!-- 
+<!--
   ============================================================================
   IMPORTANT: The tasks below are SAMPLE TASKS for illustration purposes only.
-  
+
   The /speckit.tasks command MUST replace these with actual tasks based on:
   - User stories from spec.md (with their priorities P1, P2, P3...)
   - Feature requirements from plan.md
   - Entities from data-model.md
   - Endpoints from contracts/
-  
+
   Tasks MUST be organized by user story so each story can be:
   - Implemented independently
   - Tested independently
   - Delivered as an MVP increment
-  
+
   DO NOT keep these sample tasks in the generated tasks.md file.
   ============================================================================
 -->
@@ -96,8 +96,8 @@ For each infrastructure component added (e.g., database, external service):
 
 > **NOTE: Write these tests FIRST, ensure they FAIL before implementation**
 
-- [ ] T010 [P] [US1] Contract test for [endpoint] in tests/contract/test_[name].py
-- [ ] T011 [P] [US1] Integration test for [user journey] in tests/integration/test_[name].py
+- [ ] T010 [P] [US1] Contract test for [endpoint] in tests/contract/test\_[name].py
+- [ ] T011 [P] [US1] Integration test for [user journey] in tests/integration/test\_[name].py
 
 ### Implementation for User Story 1
 
@@ -131,8 +131,8 @@ For each infrastructure component added (e.g., database, external service):
 
 ### Unit/Integration Tests for User Story 2 (OPTIONAL - only if tests requested) ⚠️
 
-- [ ] T024 [P] [US2] Contract test for [endpoint] in tests/contract/test_[name].py
-- [ ] T025 [P] [US2] Integration test for [user journey] in tests/integration/test_[name].py
+- [ ] T024 [P] [US2] Contract test for [endpoint] in tests/contract/test\_[name].py
+- [ ] T025 [P] [US2] Integration test for [user journey] in tests/integration/test\_[name].py
 
 ### Implementation for User Story 2
 
@@ -162,8 +162,8 @@ For each infrastructure component added (e.g., database, external service):
 
 ### Unit/Integration Tests for User Story 3 (OPTIONAL - only if tests requested) ⚠️
 
-- [ ] T036 [P] [US3] Contract test for [endpoint] in tests/contract/test_[name].py
-- [ ] T037 [P] [US3] Integration test for [user journey] in tests/integration/test_[name].py
+- [ ] T036 [P] [US3] Contract test for [endpoint] in tests/contract/test\_[name].py
+- [ ] T037 [P] [US3] Integration test for [user journey] in tests/integration/test\_[name].py
 
 ### Implementation for User Story 3
 

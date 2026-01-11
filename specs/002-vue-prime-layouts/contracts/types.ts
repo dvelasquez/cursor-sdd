@@ -1,8 +1,8 @@
 /**
  * Shared Type Definitions
- * 
+ *
  * Re-exported types from data-model.md for use in contracts and implementation
- * 
+ *
  * Feature: 002-vue-prime-layouts
  * Date: 2026-01-10
  */
@@ -20,7 +20,7 @@ export interface SessionMetadata {
 /**
  * Mock User Session
  * Simulated authentication state data for UI development and layout testing
- * 
+ *
  * Per spec clarification:
  * - Standard profile indicator set: username/email displayed, avatar or initial, logout button
  * - Located in header area, typically top-right (per clarification)
@@ -46,19 +46,19 @@ export interface MockUserSession {
  */
 export function isValidMockSession(session: unknown): session is MockUserSession {
   if (typeof session !== 'object' || session === null) return false;
-  
+
   const s = session as Partial<MockUserSession>;
-  
+
   // Required fields
   if (typeof s.id !== 'string' || s.id.length === 0) return false;
   if (typeof s.isAuthenticated !== 'boolean') return false;
-  
+
   // At least one of username or email must be provided
   if (!s.username && !s.email) return false;
-  
+
   // If avatar is null, initial must be provided
   if (s.avatar === null && !s.initial) return false;
-  
+
   return true;
 }
 
@@ -71,17 +71,17 @@ export function isValidMockSession(session: unknown): session is MockUserSession
 export function createInitial(username?: string, email?: string): string {
   const source = username || email || '';
   if (source.length === 0) return '?';
-  
+
   // Get first letter of first word
   const first = source.charAt(0).toUpperCase();
-  
+
   // If username has multiple words, get first letter of last word too
   if (username && username.includes(' ')) {
     const parts = username.split(' ');
     const last = parts[parts.length - 1].charAt(0).toUpperCase();
     return `${first}${last}`;
   }
-  
+
   return first;
 }
 

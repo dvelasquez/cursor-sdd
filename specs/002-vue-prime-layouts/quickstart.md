@@ -17,6 +17,7 @@ Before starting, ensure you have:
   - `@tailwindcss/vite@4.1.18` ✅ (already installed)
 
 **Verify prerequisites:**
+
 ```bash
 cd /home/dan/dev/d13z/cursor-sdd
 pnpm --version  # Should show pnpm version
@@ -35,11 +36,13 @@ pnpm install primevue@4.5.4 primeicons tailwindcss-primeui
 ```
 
 **Expected packages added:**
+
 - `primevue@4.5.4` - PrimeVue component library
 - `primeicons` - Icon library for PrimeVue components
 - `tailwindcss-primeui` - Official PrimeVue + Tailwind CSS integration plugin
 
 **Verify installation:**
+
 ```bash
 pnpm list primevue primeicons tailwindcss-primeui
 ```
@@ -51,16 +54,18 @@ pnpm list primevue primeicons tailwindcss-primeui
 Update `src/styles/global.css` to include the PrimeVue Tailwind plugin:
 
 **Before:**
+
 ```css
 /* src/styles/global.css */
 /* Tailwind base styles */
 ```
 
 **After:**
+
 ```css
 /* src/styles/global.css */
-@import "tailwindcss";
-@import "tailwindcss-primeui";
+@import 'tailwindcss';
+@import 'tailwindcss-primeui';
 ```
 
 **Note**: For Tailwind CSS v4, the plugin is imported directly in CSS (no `tailwind.config.js` needed). See [research.md](./research.md) for details.
@@ -85,21 +90,23 @@ export default (app: App) => {
       options: {
         cssLayer: {
           name: 'primevue',
-          order: 'theme, base, primevue'
-        }
-      }
-    }
+          order: 'theme, base, primevue',
+        },
+      },
+    },
   });
 };
 ```
 
 **Install theme preset:**
+
 ```bash
 pnpm install @primeuix/themes
 ```
 
 **Alternative (Unstyled Mode):**
 If you prefer unstyled mode with full Tailwind control:
+
 ```typescript
 // src/pages/_app.ts
 import { createApp, type App } from 'vue';
@@ -118,6 +125,7 @@ export default (app: App) => {
 Update `astro.config.mjs` to include the Vue app entrypoint:
 
 **Before:**
+
 ```javascript
 import vue from '@astrojs/vue';
 
@@ -128,13 +136,12 @@ export default defineConfig({
 ```
 
 **After:**
+
 ```javascript
 import vue from '@astrojs/vue';
 
 export default defineConfig({
-  integrations: [
-    vue({ appEntrypoint: '/src/pages/_app' })
-  ],
+  integrations: [vue({ appEntrypoint: '/src/pages/_app' })],
   // ...
 });
 ```
@@ -157,6 +164,7 @@ mkdir -p src/lib/types
 ```
 
 **Project structure:**
+
 ```
 src/
 ├── components/
@@ -216,6 +224,7 @@ export const mockUnauthenticated: MockUserSession = {
 ```
 
 **Note**: For TypeScript types, import from contracts:
+
 ```typescript
 import type { MockUserSession } from '../../specs/002-vue-prime-layouts/contracts/types';
 ```
@@ -227,6 +236,7 @@ import type { MockUserSession } from '../../specs/002-vue-prime-layouts/contract
 Create a simple Vue component using PrimeVue to verify setup:
 
 **`src/components/vue/Button.vue`:**
+
 ```vue
 <script setup lang="ts">
 import Button from 'primevue/button';
@@ -240,14 +250,17 @@ defineProps<Props>();
 </script>
 
 <template>
-  <Button 
-    :label="label" 
-    :class="className || 'bg-primary hover:bg-primary-emphasis text-primary-contrast rounded-border p-4'"
+  <Button
+    :label="label"
+    :class="
+      className || 'bg-primary hover:bg-primary-emphasis text-primary-contrast rounded-border p-4'
+    "
   />
 </template>
 ```
 
 **Use in Astro page (`src/pages/test.astro`):**
+
 ```astro
 ---
 import MyButton from '../components/vue/Button.vue';
@@ -271,6 +284,7 @@ pnpm dev
 ```
 
 **Checklist:**
+
 - ✅ Application starts without errors
 - ✅ No console errors in browser
 - ✅ PrimeVue button renders correctly
@@ -279,12 +293,12 @@ pnpm dev
 
 **Troubleshooting:**
 
-| Issue | Solution |
-|-------|----------|
-| `Cannot find module 'primevue/button'` | Run `pnpm install primevue@4.5.4` |
-| Tailwind utilities not working | Verify `@import "tailwindcss-primeui";` in `global.css` |
-| PrimeVue theme not loading | Verify `@primeuix/themes` installed and imported in `_app.ts` |
-| Vue components not hydrating | Ensure `client:load` directive is used in Astro |
+| Issue                                  | Solution                                                      |
+| -------------------------------------- | ------------------------------------------------------------- |
+| `Cannot find module 'primevue/button'` | Run `pnpm install primevue@4.5.4`                             |
+| Tailwind utilities not working         | Verify `@import "tailwindcss-primeui";` in `global.css`       |
+| PrimeVue theme not loading             | Verify `@primeuix/themes` installed and imported in `_app.ts` |
+| Vue components not hydrating           | Ensure `client:load` directive is used in Astro               |
 
 ---
 
@@ -311,11 +325,11 @@ import PublicNav from '../components/vue/PublicNav.vue';
     <header>
       <PublicNav client:load />
     </header>
-    
+
     <main>
       <slot />
     </main>
-    
+
     <footer>
       <p>Footer content</p>
     </footer>
@@ -324,18 +338,19 @@ import PublicNav from '../components/vue/PublicNav.vue';
 ```
 
 **Navigation component (`src/components/vue/PublicNav.vue`):**
+
 ```vue
 <script setup lang="ts">
 import Menubar from 'primevue/menubar';
 import { PUBLIC_NAV_ITEMS } from '../../specs/002-vue-prime-layouts/contracts/component-interfaces';
 
-const items = PUBLIC_NAV_ITEMS.map(item => ({
+const items = PUBLIC_NAV_ITEMS.map((item) => ({
   label: item.label,
   icon: item.icon,
   command: () => {
     // Handle navigation (use Astro routing or client-side router)
     window.location.href = item.href;
-  }
+  },
 }));
 </script>
 
@@ -372,11 +387,11 @@ import { mockUserSession } from '../lib/fixtures/mock-user-session';
       <PrivateNav client:load :userSession={mockUserSession} />
       <UserProfile client:load :userSession={mockUserSession} position="header-top-right" />
     </header>
-    
+
     <main>
       <slot />
     </main>
-    
+
     <footer>
       <p>Footer content</p>
     </footer>
@@ -385,6 +400,7 @@ import { mockUserSession } from '../lib/fixtures/mock-user-session';
 ```
 
 **UserProfile component (`src/components/vue/UserProfile.vue`):**
+
 ```vue
 <script setup lang="ts">
 import Avatar from 'primevue/avatar';
@@ -411,21 +427,16 @@ function handleLogout() {
 <template>
   <div class="flex items-center gap-3">
     <span class="text-surface-700">{{ displayName }}</span>
-    <Avatar 
-      v-if="avatarUrl" 
-      :image="avatarUrl" 
-      :label="initial" 
+    <Avatar
+      v-if="avatarUrl"
+      :image="avatarUrl"
+      :label="initial"
       shape="circle"
       class="bg-primary text-primary-contrast"
     />
-    <Avatar 
-      v-else 
-      :label="initial" 
-      shape="circle"
-      class="bg-primary text-primary-contrast"
-    />
-    <Button 
-      label="Logout" 
+    <Avatar v-else :label="initial" shape="circle" class="bg-primary text-primary-contrast" />
+    <Button
+      label="Logout"
       icon="pi pi-sign-out"
       @click="handleLogout"
       class="bg-primary-emphasis hover:bg-primary"
@@ -439,6 +450,7 @@ function handleLogout() {
 ## Step 11: Create Example Pages
 
 **Public page (`src/pages/about.astro`):**
+
 ```astro
 ---
 import PublicLayout from '../layouts/PublicLayout.astro';
@@ -451,6 +463,7 @@ import PublicLayout from '../layouts/PublicLayout.astro';
 ```
 
 **Private page (`src/pages/dashboard/index.astro`):**
+
 ```astro
 ---
 import PrivateLayout from '../layouts/PrivateLayout.astro';
@@ -469,15 +482,17 @@ import PrivateLayout from '../layouts/PrivateLayout.astro';
 Follow progressive testing workflow per constitution:
 
 ### 1. Static Analysis
+
 ```bash
 # Type checking
 pnpm astro check
 
 # Linting (if configured)
-pnpm run lint
+pnpm lint
 ```
 
 ### 2. Build Verification
+
 ```bash
 # Build application
 pnpm build
@@ -486,6 +501,7 @@ pnpm build
 ```
 
 ### 3. Browser Loading Verification
+
 ```bash
 # Start dev server
 pnpm dev
@@ -498,6 +514,7 @@ pnpm dev
 ```
 
 ### 4. End-to-End Validation
+
 - ✅ Visit `/about` - Verify public layout renders correctly
 - ✅ Visit `/dashboard` - Verify private layout renders with auth indicators
 - ✅ Verify responsive behavior (320px-2560px width range)
@@ -517,6 +534,7 @@ Common components you can use with `tailwindcss-primeui` utilities:
 - **Media**: `Avatar`, `Image`, `Carousel`
 
 **Import pattern:**
+
 ```vue
 <script setup>
 import Button from 'primevue/button';
@@ -526,18 +544,17 @@ import Card from 'primevue/card';
 ```
 
 **Styling with tailwindcss-primeui utilities:**
+
 ```vue
 <template>
   <!-- Semantic theme colors -->
   <Button class="bg-primary text-primary-contrast" />
-  
+
   <!-- Color palette utilities -->
   <Card class="bg-surface-50 border border-surface-200" />
-  
+
   <!-- Theme utilities -->
-  <div class="rounded-border p-4 bg-emphasis">
-    Content
-  </div>
+  <div class="rounded-border p-4 bg-emphasis">Content</div>
 </template>
 ```
 
@@ -553,6 +570,7 @@ See [PrimeVue Tailwind CSS documentation](https://primevue.org/tailwind/) for co
 4. **Implementation Tasks**: See `tasks.md` (will be created by `/speckit.tasks` command)
 
 **Recommended Implementation Order:**
+
 1. ✅ Setup and configuration (Steps 1-6)
 2. ✅ Verify basic PrimeVue component works (Step 7-8)
 3. ⏳ Implement PublicLayout (Step 9)
@@ -567,23 +585,27 @@ See [PrimeVue Tailwind CSS documentation](https://primevue.org/tailwind/) for co
 ### Common Issues
 
 **Issue**: `@primeuix/themes` not found
+
 ```bash
 pnpm install @primeuix/themes
 ```
 
 **Issue**: TypeScript errors in contracts
+
 ```bash
 # Verify TypeScript can resolve contract types
 # Check tsconfig.json includes contract paths if needed
 ```
 
 **Issue**: Tailwind utilities from plugin not working
+
 ```bash
 # Verify @import "tailwindcss-primeui"; is after @import "tailwindcss";
 # Restart dev server after CSS changes
 ```
 
 **Issue**: PrimeVue components not rendering
+
 ```bash
 # Verify _app.ts is correctly configured
 # Check browser console for Vue errors
@@ -608,6 +630,7 @@ pnpm install @primeuix/themes
 ## Support
 
 For issues or questions:
+
 1. Check [research.md](./research.md) for technical decisions
 2. Review [contracts/README.md](./contracts/README.md) for component interfaces
 3. Verify setup against this quickstart guide

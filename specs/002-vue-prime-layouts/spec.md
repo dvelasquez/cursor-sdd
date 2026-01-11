@@ -15,7 +15,7 @@
 - Q: Where should authentication state indicators appear in the private layout? → A: Header area (top navigation bar, typically top-right)
 - Q: What navigation items should be included in the layout structures? → A: Minimal navigation placeholder (home, about, login links for public; dashboard, profile, logout for private)
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing _(mandatory)_
 
 ### User Story 1 - View Public Pages with Standard Layout (Priority: P1)
 
@@ -76,7 +76,7 @@ Users visiting the application homepage see an improved visual experience using 
 - How does the system handle layout rendering on very small screens (mobile devices) or very large screens (large desktop displays)?
 - What happens when layout components receive invalid or missing mock data during development?
 
-## Requirements *(mandatory)*
+## Requirements _(mandatory)_
 
 ### Functional Requirements
 
@@ -92,13 +92,13 @@ Users visiting the application homepage see an improved visual experience using 
 - **FR-010**: Layout components MUST render correctly when used in combination with both component library elements and Astro components
 - **FR-011**: System MUST provide a foundation for future authentication integration while currently using mock authentication state
 
-### Key Entities *(include if feature involves data)*
+### Key Entities _(include if feature involves data)_
 
 - **Layout Configuration**: Represents the structure and styling configuration for public and private page layouts, including header content, navigation structure, footer content, and responsive breakpoints
 - **Mock User Session**: Represents simulated authentication state data used during UI development, including user identification (username or email), avatar or initial for display, login status, and session metadata for testing layout behavior
 - **Component Integration**: Represents the relationship between component library UI elements, Astro page components, and layout structures that work together to create cohesive pages
 
-## Success Criteria *(mandatory)*
+## Success Criteria _(mandatory)_
 
 ### Measurable Outcomes
 

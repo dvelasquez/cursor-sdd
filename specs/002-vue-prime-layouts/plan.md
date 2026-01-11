@@ -17,7 +17,7 @@
   ACTION REQUIRED: Replace the content in this section with the technical details
   for the project. The structure here is presented in advisory capacity to guide
   the iteration process.
-  
+
   NOTE: Technology stack is defined in constitution (.specify/memory/constitution.md):
   - Language: JavaScript/TypeScript
   - Runtime: Node.js
@@ -43,7 +43,7 @@
 
 ## Constitution Check
 
-*GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
+_GATE: Must pass before Phase 0 research. Re-check after Phase 1 design._
 
 Verify compliance with all constitution principles:
 
@@ -124,6 +124,7 @@ src/
 ```
 
 **Structure Decision**: Single Astro project structure (Option 1 - DEFAULT). The project is a web application using Astro's file-based routing with:
+
 - **Astro layouts** (`src/layouts/`) for page-level structure (public vs private)
 - **Vue components** (`src/components/vue/`) for interactive PrimeVue components
 - **Astro pages** (`src/pages/`) for routes with file-based routing
@@ -132,12 +133,14 @@ src/
 - **No test directory structure** needed - progressive E2E validation per constitution (browser testing)
 
 **New Directories to Create**:
+
 - `src/components/vue/` - Vue components using PrimeVue
 - `src/lib/fixtures/` - Mock data fixtures
 - Additional layout files in `src/layouts/`
 - Example pages in `src/pages/` for demonstration
 
 **Existing Directories to Modify**:
+
 - `src/layouts/Layout.astro` - May refactor or keep as base
 - `src/pages/index.astro` - Enhanced with PrimeVue components (User Story 3)
 
@@ -145,6 +148,6 @@ src/
 
 > **Fill ONLY if Constitution Check has violations that must be justified**
 
-| Violation | Why Needed | Simpler Alternative Rejected Because |
-|-----------|------------|-------------------------------------|
-| None | N/A | N/A - No constitution violations detected |
+| Violation | Why Needed | Simpler Alternative Rejected Because      |
+| --------- | ---------- | ----------------------------------------- |
+| None      | N/A        | N/A - No constitution violations detected |

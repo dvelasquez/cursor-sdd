@@ -54,16 +54,16 @@ function toggleMobileMenu() {
     </div>
 
     <!-- Mobile: Overlay menu -->
-    <div
-      v-if="isMobileMenuOpen"
-      class="md:hidden bg-gray-800 border-t border-gray-700"
-    >
+    <div v-if="isMobileMenuOpen" class="md:hidden bg-gray-800 border-t border-gray-700">
       <ul class="flex flex-col list-none m-0 p-0">
         <li v-for="item in navItems" :key="item.href">
           <a
             :href="item.href"
             class="flex items-center gap-2 px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white transition-colors duration-200 cursor-pointer font-medium no-underline border-b border-gray-700 last:border-b-0"
-            @click.prevent="navigate(item.href); isMobileMenuOpen = false"
+            @click.prevent="
+              navigate(item.href);
+              isMobileMenuOpen = false;
+            "
           >
             <i :class="item.icon" class="text-sm" />
             <span>{{ item.label }}</span>

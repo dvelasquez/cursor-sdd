@@ -46,12 +46,12 @@ function handleLogout() {
       size="normal"
       class="w-10 h-10 rounded-full bg-gray-600 text-white flex items-center justify-center font-semibold flex-shrink-0"
     />
-    
+
     <!-- Username/Email display -->
     <div class="flex flex-col min-w-0">
       <span class="text-white text-sm font-medium truncate">{{ displayName }}</span>
     </div>
-    
+
     <!-- Logout button - emits logout event on click (per T062) -->
     <Button
       label="Logout"
