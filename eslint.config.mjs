@@ -7,6 +7,7 @@ import vueParser from 'vue-eslint-parser';
 import astroPlugin from 'eslint-plugin-astro';
 import prettierPlugin from 'eslint-plugin-prettier';
 import prettierConfig from 'eslint-config-prettier';
+import playwrightPlugin from 'eslint-plugin-playwright';
 
 export default [
   js.configs.recommended,
@@ -107,8 +108,25 @@ export default [
       '@typescript-eslint/no-unsafe-return': 'off',
     },
   },
+  // Playwright test files - apply Playwright linting rules
+  {
+    files: ['specs/**/e2e/**/*.spec.{ts,tsx}'],
+    plugins: {
+      playwright: playwrightPlugin,
+    },
+    ...playwrightPlugin.configs['flat/recommended'],
+  },
   // Ignore patterns
   {
-    ignores: ['node_modules/', 'dist/', '.astro/', 'build/', 'coverage/', '**/*.d.ts', 'specs/**'],
+    ignores: [
+      'node_modules/',
+      'dist/',
+      '.astro/',
+      'build/',
+      'coverage/',
+      '**/*.d.ts',
+      // Ignore specs documentation files (markdown) but allow TypeScript test files
+      'specs/**/*.md',
+    ],
   },
 ];

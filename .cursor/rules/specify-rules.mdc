@@ -5,6 +5,7 @@ Auto-generated from all feature plans. Last updated: 2026-01-10
 ## Active Technologies
 - JavaScript/TypeScript (per constitution) (003-linting-tooling)
 - N/A (tooling configuration only) (003-linting-tooling)
+- N/A (E2E testing infrastructure only) (004-playwright-e2e)
 
 - JavaScript/TypeScript (TypeScript with strict mode, per constitution) (002-vue-prime-layouts)
 
@@ -24,6 +25,7 @@ npm test && npm run lint
 JavaScript/TypeScript (TypeScript with strict mode, per constitution): Follow standard conventions
 
 ## Recent Changes
+- 004-playwright-e2e: Added JavaScript/TypeScript (per constitution)
 - 003-linting-tooling: Added JavaScript/TypeScript (per constitution)
 
 - 002-vue-prime-layouts: Added JavaScript/TypeScript (TypeScript with strict mode, per constitution)

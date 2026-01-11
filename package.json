@@ -12,7 +12,10 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "typecheck": "astro check",
-    "prepare": "husky"
+    "prepare": "husky",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:debug": "playwright test --debug"
   },
   "dependencies": {
     "@astrojs/node": "9.5.1",
@@ -35,6 +38,7 @@
     "eslint": "9.39.2",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-astro": "1.5.0",
+    "eslint-plugin-playwright": "2.4.1",
     "eslint-plugin-prettier": "5.5.4",
     "eslint-plugin-tailwindcss": "3.18.2",
     "eslint-plugin-vue": "10.6.2",

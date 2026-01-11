@@ -69,17 +69,17 @@ export function isValidMockSession(session: unknown): session is MockUserSession
  * @returns Initial string (1-2 characters)
  */
 export function createInitial(username?: string, email?: string): string {
-  const source = username || email || '';
+  const source = username ?? email ?? '';
   if (source.length === 0) return '?';
 
   // Get first letter of first word
   const first = source.charAt(0).toUpperCase();
 
   // If username has multiple words, get first letter of last word too
-  if (username && username.includes(' ')) {
+  if (username?.includes(' ')) {
     const parts = username.split(' ');
-    const last = parts[parts.length - 1].charAt(0).toUpperCase();
-    return `${first}${last}`;
+    const last = parts[parts.length - 1]?.charAt(0).toUpperCase();
+    return last ? `${first}${last}` : first;
   }
 
   return first;

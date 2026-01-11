@@ -144,6 +144,7 @@ export interface LogoutEvent {
  * Standard layout for public pages (landing, docs, marketing)
  * Uses Astro slots for content
  */
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface PublicLayoutProps {
   // No props needed - uses Astro slots
   // Can add optional props for customization if needed
