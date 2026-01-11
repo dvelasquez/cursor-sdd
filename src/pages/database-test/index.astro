@@ -1,0 +1,44 @@
+---
+import PrivateLayout from '../../layouts/PrivateLayout.astro';
+import DatabaseTable from '../../components/vue/DatabaseTable.vue';
+import { getDatabaseData } from '../../lib/db/connection';
+import type { TestTableRow } from '../../../specs/005-astro-db-turso/contracts/types';
+
+// Fetch database data server-side
+let data: TestTableRow[] = [];
+let loading = false;
+let error: string | null = null;
+
+try {
+  loading = true;
+  const result = await getDatabaseData();
+
+  if (result.success && result.data) {
+    data = result.data;
+    // If data is empty array, we still want to show it (not set error)
+    // The component will handle showing "empty" message
+    if (result.error && result.errorType === 'empty') {
+      // Keep error null, let component handle empty state
+      error = null;
+    }
+  } else {
+    error = result.error || 'An unknown error occurred.';
+  }
+} catch (err) {
+  error = 'Unable to connect to database. Please try again later.';
+  console.error('Database fetch error:', err);
+} finally {
+  loading = false;
+}
+---
+
+<PrivateLayout>
+  <div class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold mb-6">Database Connection Test</h1>
+    <p class="text-gray-400 mb-6">
+      This page tests the database connection and displays data from the test_table.
+    </p>
+
+    <DatabaseTable client:load data={data} loading={loading} error={error} />
+  </div>
+</PrivateLayout>
