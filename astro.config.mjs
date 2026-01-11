@@ -7,9 +7,11 @@ import tailwindcss from '@tailwindcss/vite';
 
 import node from '@astrojs/node';
 
+import db from '@astrojs/db';
+
 // https://astro.build/config
 export default defineConfig({
-  integrations: [vue({ appEntrypoint: '/src/pages/_app' })],
+  integrations: [vue({ appEntrypoint: '/src/pages/_app' }), db()],
 
   vite: {
     plugins: [tailwindcss()],
@@ -20,6 +22,10 @@ export default defineConfig({
         'primevue/badge',
         'primevue/chip',
         'primevue/tag',
+        'primevue/datatable',
+        'primevue/column',
+        'primevue/progressspinner',
+        'primevue/message',
       ],
     },
   },
