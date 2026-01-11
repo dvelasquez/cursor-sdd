@@ -7,6 +7,7 @@
 ## Overview
 
 This feature is UI-focused with mock data during development. The data model defines:
+
 1. **Layout Configuration** - Structure and styling configuration for public/private layouts
 2. **Mock User Session** - Simulated authentication state for UI development
 3. **Navigation Structure** - Navigation item definitions for public and private layouts
@@ -23,72 +24,74 @@ This feature is UI-focused with mock data during development. The data model def
 
 **Attributes**:
 
-| Field | Type | Required | Description | Validation Rules |
-|-------|------|----------|-------------|------------------|
-| `type` | `'public' \| 'private'` | Yes | Layout type identifier | Must be one of: 'public', 'private' |
-| `header` | `HeaderConfig` | Yes | Header configuration | Must include navigation structure |
-| `footer` | `FooterConfig` | Optional | Footer configuration | Can be empty for minimal layouts |
-| `responsiveBreakpoints` | `BreakpointConfig` | Yes | Responsive design breakpoints | Must support 320px-2560px width range |
-| `theme` | `ThemeConfig` | Optional | Theme/styling configuration | Uses Tailwind CSS + PrimeVue plugin defaults if not specified |
+| Field                   | Type                    | Required | Description                   | Validation Rules                                              |
+| ----------------------- | ----------------------- | -------- | ----------------------------- | ------------------------------------------------------------- |
+| `type`                  | `'public' \| 'private'` | Yes      | Layout type identifier        | Must be one of: 'public', 'private'                           |
+| `header`                | `HeaderConfig`          | Yes      | Header configuration          | Must include navigation structure                             |
+| `footer`                | `FooterConfig`          | Optional | Footer configuration          | Can be empty for minimal layouts                              |
+| `responsiveBreakpoints` | `BreakpointConfig`      | Yes      | Responsive design breakpoints | Must support 320px-2560px width range                         |
+| `theme`                 | `ThemeConfig`           | Optional | Theme/styling configuration   | Uses Tailwind CSS + PrimeVue plugin defaults if not specified |
 
 **Sub-entities**:
 
 #### HeaderConfig
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `navigation` | `NavigationItem[]` | Yes | Array of navigation items |
-| `showBranding` | `boolean` | Yes | Whether to display branding/logo |
+| Field            | Type                  | Required    | Description                                         |
+| ---------------- | --------------------- | ----------- | --------------------------------------------------- |
+| `navigation`     | `NavigationItem[]`    | Yes         | Array of navigation items                           |
+| `showBranding`   | `boolean`             | Yes         | Whether to display branding/logo                    |
 | `authIndicators` | `AuthIndicatorConfig` | Conditional | Required for private layouts, not present in public |
 
 #### NavigationItem
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `label` | `string` | Yes | Display text for navigation link |
-| `href` | `string` | Yes | URL path or route |
-| `icon` | `string` | Optional | Icon identifier (PrimeIcons class name) |
+| Field   | Type     | Required | Description                             |
+| ------- | -------- | -------- | --------------------------------------- |
+| `label` | `string` | Yes      | Display text for navigation link        |
+| `href`  | `string` | Yes      | URL path or route                       |
+| `icon`  | `string` | Optional | Icon identifier (PrimeIcons class name) |
 
 #### AuthIndicatorConfig (Private layouts only)
 
-| Field | Type | Required | Description | Validation Rules |
-|-------|------|----------|-------------|------------------|
-| `position` | `'header-top-right'` | Yes | Location of auth indicators | Must be 'header-top-right' per clarification |
-| `showUsername` | `boolean` | Yes | Display username or email | Must display user identification |
-| `showAvatar` | `boolean` | Yes | Display avatar or initial | Must include visual user representation |
-| `showLogout` | `boolean` | Yes | Display logout button | Must be present for private layouts |
+| Field          | Type                 | Required | Description                 | Validation Rules                             |
+| -------------- | -------------------- | -------- | --------------------------- | -------------------------------------------- |
+| `position`     | `'header-top-right'` | Yes      | Location of auth indicators | Must be 'header-top-right' per clarification |
+| `showUsername` | `boolean`            | Yes      | Display username or email   | Must display user identification             |
+| `showAvatar`   | `boolean`            | Yes      | Display avatar or initial   | Must include visual user representation      |
+| `showLogout`   | `boolean`            | Yes      | Display logout button       | Must be present for private layouts          |
 
 #### FooterConfig
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
+| Field     | Type                  | Required | Description                                        |
+| --------- | --------------------- | -------- | -------------------------------------------------- |
 | `content` | `string \| ReactNode` | Optional | Footer content (simple text or structured content) |
-| `links` | `NavigationItem[]` | Optional | Footer navigation links |
+| `links`   | `NavigationItem[]`    | Optional | Footer navigation links                            |
 
 #### BreakpointConfig
 
-| Field | Type | Required | Description | Validation Rules |
-|-------|------|----------|-------------|------------------|
-| `mobile` | `number` | Yes | Mobile breakpoint (max width) | Default: 640px (sm) |
-| `tablet` | `number` | Yes | Tablet breakpoint (max width) | Default: 1024px (md) |
-| `desktop` | `number` | Yes | Desktop breakpoint (min width) | Default: 1024px (lg) |
-| `minWidth` | `number` | Yes | Minimum supported width | Must be 320px per SC-003 |
-| `maxWidth` | `number` | Yes | Maximum supported width | Must be 2560px per SC-003 |
+| Field      | Type     | Required | Description                    | Validation Rules          |
+| ---------- | -------- | -------- | ------------------------------ | ------------------------- |
+| `mobile`   | `number` | Yes      | Mobile breakpoint (max width)  | Default: 640px (sm)       |
+| `tablet`   | `number` | Yes      | Tablet breakpoint (max width)  | Default: 1024px (md)      |
+| `desktop`  | `number` | Yes      | Desktop breakpoint (min width) | Default: 1024px (lg)      |
+| `minWidth` | `number` | Yes      | Minimum supported width        | Must be 320px per SC-003  |
+| `maxWidth` | `number` | Yes      | Maximum supported width        | Must be 2560px per SC-003 |
 
 #### ThemeConfig
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `preset` | `'Aura' \| 'Material' \| 'Lara' \| 'Nora'` | Optional | PrimeVue theme preset name |
-| `mode` | `'styled' \| 'unstyled'` | Optional | Styled or unstyled mode (default: 'styled' with tailwindcss-primeui) |
+| Field    | Type                                       | Required | Description                                                          |
+| -------- | ------------------------------------------ | -------- | -------------------------------------------------------------------- |
+| `preset` | `'Aura' \| 'Material' \| 'Lara' \| 'Nora'` | Optional | PrimeVue theme preset name                                           |
+| `mode`   | `'styled' \| 'unstyled'`                   | Optional | Styled or unstyled mode (default: 'styled' with tailwindcss-primeui) |
 
 **Relationships**:
+
 - Layout Configuration → Navigation Items: One-to-many (one layout has multiple nav items)
 - Layout Configuration → Auth Indicators: One-to-one (only for private layouts)
 
 **State Transitions**: None (configuration is static during runtime)
 
 **Validation Rules**:
+
 - Public layout MUST NOT include `authIndicators` field
 - Private layout MUST include `authIndicators` field with all required sub-fields
 - Navigation items for public layout MUST include: home, about, login (per clarification)
@@ -105,34 +108,37 @@ This feature is UI-focused with mock data during development. The data model def
 
 **Attributes**:
 
-| Field | Type | Required | Description | Validation Rules |
-|-------|------|----------|-------------|------------------|
-| `id` | `string` | Yes | Unique user identifier | Must be non-empty string |
-| `username` | `string` | Conditional | Username for display | Required if email not provided |
-| `email` | `string` | Conditional | Email for display | Required if username not provided |
-| `avatar` | `string \| null` | Optional | Avatar image URL | Can be null, fallback to initial |
-| `initial` | `string` | Conditional | Initial letter(s) for avatar fallback | Required if avatar is null, typically first letter of username/email |
-| `isAuthenticated` | `boolean` | Yes | Authentication state | Must be `true` for private layout testing |
-| `sessionMetadata` | `SessionMetadata` | Optional | Additional session information | For testing various session states |
+| Field             | Type              | Required    | Description                           | Validation Rules                                                     |
+| ----------------- | ----------------- | ----------- | ------------------------------------- | -------------------------------------------------------------------- |
+| `id`              | `string`          | Yes         | Unique user identifier                | Must be non-empty string                                             |
+| `username`        | `string`          | Conditional | Username for display                  | Required if email not provided                                       |
+| `email`           | `string`          | Conditional | Email for display                     | Required if username not provided                                    |
+| `avatar`          | `string \| null`  | Optional    | Avatar image URL                      | Can be null, fallback to initial                                     |
+| `initial`         | `string`          | Conditional | Initial letter(s) for avatar fallback | Required if avatar is null, typically first letter of username/email |
+| `isAuthenticated` | `boolean`         | Yes         | Authentication state                  | Must be `true` for private layout testing                            |
+| `sessionMetadata` | `SessionMetadata` | Optional    | Additional session information        | For testing various session states                                   |
 
 **Sub-entities**:
 
 #### SessionMetadata
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `loginTime` | `Date \| string` | Optional | Session start timestamp |
-| `expiresAt` | `Date \| string` | Optional | Session expiration timestamp |
-| `role` | `string` | Optional | User role (for future role-based features) |
+| Field       | Type             | Required | Description                                |
+| ----------- | ---------------- | -------- | ------------------------------------------ |
+| `loginTime` | `Date \| string` | Optional | Session start timestamp                    |
+| `expiresAt` | `Date \| string` | Optional | Session expiration timestamp               |
+| `role`      | `string`         | Optional | User role (for future role-based features) |
 
 **Relationships**:
+
 - Mock User Session → Layout Configuration: Used by private layouts to display user information
 
 **State Transitions**:
+
 - `isAuthenticated: false` → `isAuthenticated: true` (login simulation)
 - `isAuthenticated: true` → `isAuthenticated: false` (logout simulation)
 
 **Validation Rules**:
+
 - At least one of `username` or `email` MUST be provided (per FR-004)
 - If `avatar` is null, `initial` MUST be provided (fallback requirement)
 - `initial` should typically be 1-2 characters (first letter of username/email)
@@ -166,20 +172,22 @@ This feature is UI-focused with mock data during development. The data model def
 
 **Attributes**: This is not a data entity but a composition pattern:
 
-| Component Type | Location | Description |
-|----------------|----------|-------------|
-| `PrimeVueComponent` | `src/components/vue/*.vue` | Vue components using PrimeVue library |
-| `AstroLayout` | `src/layouts/*.astro` | Astro layout components (PublicLayout, PrivateLayout) |
-| `AstroPage` | `src/pages/*.astro` | Astro page components (routes) |
-| `AstroComponent` | `src/components/*.astro` | Reusable Astro components |
+| Component Type      | Location                   | Description                                           |
+| ------------------- | -------------------------- | ----------------------------------------------------- |
+| `PrimeVueComponent` | `src/components/vue/*.vue` | Vue components using PrimeVue library                 |
+| `AstroLayout`       | `src/layouts/*.astro`      | Astro layout components (PublicLayout, PrivateLayout) |
+| `AstroPage`         | `src/pages/*.astro`        | Astro page components (routes)                        |
+| `AstroComponent`    | `src/components/*.astro`   | Reusable Astro components                             |
 
 **Relationships**:
+
 - Astro Page → Astro Layout: One-to-one (each page uses one layout)
 - Astro Layout → Vue Components: One-to-many (layout can contain multiple Vue components)
 - Vue Components → PrimeVue Components: One-to-many (wrappers or direct usage)
 - Astro Components → Vue Components: Many-to-many (can be used together)
 
 **Integration Rules**:
+
 - Vue components MUST use `client:*` directives when used in Astro (per Astro architecture)
 - PrimeVue components MUST be imported in Vue files, not directly in Astro files
 - Layout components can mix Astro and Vue components as needed
@@ -312,6 +320,7 @@ PrivateLayout.astro (Layout Configuration: type='private')
 ## Future Considerations
 
 When authentication system is implemented:
+
 - MockUserSession will be replaced with actual User entity
 - Session management will include persistence and security
 - Layout configuration may need to support dynamic user roles/permissions

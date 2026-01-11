@@ -4,6 +4,7 @@
 **Prerequisites**: plan.md ✅, spec.md ✅, research.md ✅, data-model.md ✅, contracts/ ✅, quickstart.md ✅
 
 **Testing**: Per constitution, ALL implementations MUST follow progressive testing discipline:
+
 1. Static analysis (lint, typecheck) MUST pass
 2. E2E validation: Application MUST load in browser and function without errors
 3. Progressive integration: For new infrastructure, follow: verify installation → test component rendering → verify layout integration → refine styling
@@ -351,6 +352,7 @@ For PrimeVue integration:
 ### Within Each User Story
 
 Tasks within each user story follow progressive implementation:
+
 1. Create basic structure/skeleton
 2. Add components progressively
 3. Style incrementally
@@ -360,6 +362,7 @@ Tasks within each user story follow progressive implementation:
 ### Progressive Testing Per Task
 
 Per constitution, after each significant task:
+
 - Verify static analysis passes (`pnpm astro check`)
 - Start dev server (`pnpm dev`)
 - Load affected pages in browser
@@ -397,12 +400,14 @@ Per constitution, after each significant task:
 ### Progressive One-Step-at-a-Time Approach
 
 Each task is atomic and should be:
+
 1. **Completed**: Implement the task
 2. **Validated**: Verify it works in browser (dev server, check console, verify rendering)
 3. **Committed**: Commit the change
 4. **Reviewed**: Manual review before proceeding to next task
 
 This ensures:
+
 - Changes are incremental and reviewable
 - Each step is verified before moving forward
 - Errors are caught early
@@ -426,6 +431,7 @@ This ensures:
 ## Task Summary
 
 **Total Tasks**: 106
+
 - **Phase 1 (Setup)**: 6 tasks
 - **Phase 2 (Foundational)**: 8 tasks
 - **Phase 3 (User Story 1)**: 32 tasks (progressive, step-by-step)
@@ -434,6 +440,7 @@ This ensures:
 - **Phase 6 (Polish)**: 5 tasks
 
 **Independent Test Criteria**:
+
 - **US1**: Visit any public page, verify header, navigation, footer, content area render correctly
 - **US2**: Visit private page with mock auth, verify auth indicators, private navigation, logout functionality
 - **US3**: Visit homepage, verify enhanced components render, interact correctly, maintain layout consistency

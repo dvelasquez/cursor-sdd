@@ -1,9 +1,9 @@
 /**
  * Component Interface Contracts
- * 
+ *
  * TypeScript interfaces for Vue components and Astro layouts
  * Used for type checking and documentation
- * 
+ *
  * Feature: 002-vue-prime-layouts
  * Date: 2026-01-10
  */
@@ -105,7 +105,7 @@ export interface PrivateNavProps {
 /**
  * UserProfile.vue Component Props
  * Authentication state indicator component (username/email, avatar/initial, logout button)
- * 
+ *
  * Note: MockUserSession type imported from types.ts
  */
 export interface UserProfileProps {
@@ -166,10 +166,10 @@ export interface PrivateLayoutProps {
  * Per spec SC-003: Must support 320px-2560px width
  */
 export const DEFAULT_BREAKPOINTS: BreakpointConfig = {
-  mobile: 640,    // Tailwind 'sm' breakpoint
-  tablet: 1024,   // Tailwind 'md' breakpoint
-  desktop: 1024,  // Tailwind 'lg' breakpoint (min width)
-  minWidth: 320,  // SC-003 requirement
+  mobile: 640, // Tailwind 'sm' breakpoint
+  tablet: 1024, // Tailwind 'md' breakpoint
+  desktop: 1024, // Tailwind 'lg' breakpoint (min width)
+  minWidth: 320, // SC-003 requirement
   maxWidth: 2560, // SC-003 requirement
 };
 
