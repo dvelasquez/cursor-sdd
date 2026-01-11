@@ -154,7 +154,7 @@ For database infrastructure:
 ### Within Each Phase
 
 - **Phase 1 (Setup)**: Tasks T001-T007 can mostly run in parallel (marked [P])
-- **Phase 2 (Foundational)**: 
+- **Phase 2 (Foundational)**:
   - T008-T012 must run sequentially (schema → types → connection)
   - Progressive integration (T013-T016) must run sequentially
 - **Phase 3 (User Story 1)**:
@@ -167,7 +167,7 @@ For database infrastructure:
 
 - **Phase 1**: T002, T003, T004, T005, T006 can run in parallel (different setup tasks)
 - **Phase 2**: T010 (types) can run in parallel with T008 (schema) - both are independent
-- **Phase 3**: 
+- **Phase 3**:
   - T017-T021 (Vue component implementation) can run in parallel with T022-T024 (Astro page)
   - T025-T027 (error handling refinement) can run after T023 completes
 - **Phase 4**: T040, T041, T042, T044 can run in parallel (validation tasks)

@@ -97,7 +97,10 @@ Create `src/lib/db/connection.ts`:
 ```typescript
 import { getSecret } from 'astro:env/server';
 import { db } from 'astro:db';
-import type { DatabaseQueryResult, TestTableRow } from '../../../specs/005-astro-db-turso/contracts/types';
+import type {
+  DatabaseQueryResult,
+  TestTableRow,
+} from '../../../specs/005-astro-db-turso/contracts/types';
 
 /**
  * Retrieves database credentials from environment secrets.
@@ -199,7 +202,10 @@ import { DataTable } from 'primevue/datatable';
 import { Column } from 'primevue/column';
 import { ProgressSpinner } from 'primevue/progressspinner';
 import { Message } from 'primevue/message';
-import type { DatabaseTableProps, TestTableRow } from '../../../specs/005-astro-db-turso/contracts/types';
+import type {
+  DatabaseTableProps,
+  TestTableRow,
+} from '../../../specs/005-astro-db-turso/contracts/types';
 
 const props = defineProps<DatabaseTableProps>();
 
@@ -227,19 +233,11 @@ const formatDate = (date: Date | string): string => {
 
     <!-- Empty State -->
     <div v-else-if="props.data.length === 0" class="p-4">
-      <Message severity="info" :closable="false">
-        The table is empty.
-      </Message>
+      <Message severity="info" :closable="false"> The table is empty. </Message>
     </div>
 
     <!-- Success State: Display Table -->
-    <DataTable
-      v-else
-      :value="props.data"
-      :paginator="false"
-      :rows="100"
-      class="p-datatable-sm"
-    >
+    <DataTable v-else :value="props.data" :paginator="false" :rows="100" class="p-datatable-sm">
       <Column field="id" header="ID" :sortable="true" />
       <Column field="name" header="Name" :sortable="true" />
       <Column field="created_at" header="Created At" :sortable="true">
@@ -281,7 +279,7 @@ let error: string | null = null;
 try {
   loading = true;
   const result = await getDatabaseData();
-  
+
   if (result.success && result.data) {
     data = result.data;
   } else {
@@ -301,13 +299,8 @@ try {
     <p class="text-gray-400 mb-6">
       This page tests the database connection and displays data from the test_table.
     </p>
-    
-    <DatabaseTable 
-      client:load
-      data={data}
-      loading={loading}
-      error={error}
-    />
+
+    <DatabaseTable client:load data={data} loading={loading} error={error} />
   </div>
 </PrivateLayout>
 ```
@@ -340,6 +333,7 @@ export async function seedTestData() {
 ```
 
 **Note**: Since write operations are out of scope, seed data manually:
+
 - Use Turso web console, or
 - Use `turso db shell cursor-sdd-test` to run SQL commands
 

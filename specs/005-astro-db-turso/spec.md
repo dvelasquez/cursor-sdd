@@ -3,7 +3,7 @@
 **Feature Branch**: `005-astro-db-turso`  
 **Created**: 2026-01-12  
 **Status**: Draft  
-**Input**: User description: "Let's add database support. For this we are going to use astro:db and turso.  The focus of this spec is adding support, be able to read a table and print the table in a private page. We want to focus on testing the database connection for now, no further implementation. Remember to use astro getSecrets to get secrets from the system."
+**Input**: User description: "Let's add database support. For this we are going to use astro:db and turso. The focus of this spec is adding support, be able to read a table and print the table in a private page. We want to focus on testing the database connection for now, no further implementation. Remember to use astro getSecrets to get secrets from the system."
 
 ## Clarifications
 

@@ -82,6 +82,7 @@ interface DatabaseTableProps {
 ```
 
 **Props**:
+
 - `data`: Array of table rows to display
 - `loading`: Boolean indicating if data is being fetched
 - `error`: Error message string or null if no error
@@ -98,7 +99,7 @@ interface DatabaseTableProps {
 User-friendly error messages (no technical details) for different error scenarios:
 
 ```typescript
-type ErrorMessage = 
+type ErrorMessage =
   | 'Unable to connect to database. Please try again later.'
   | 'Request timed out. Please try again.'
   | 'The table is empty.'
@@ -117,14 +118,15 @@ type ErrorMessage =
 Server-side function that retrieves data from the database.
 
 ```typescript
-async function getDatabaseData(): Promise<DatabaseQueryResult>
+async function getDatabaseData(): Promise<DatabaseQueryResult>;
 ```
 
 **Returns**: `DatabaseQueryResult` with success status, data, or error information.
 
 **Usage**: Called from Astro page component to fetch database data.
 
-**Error Handling**: 
+**Error Handling**:
+
 - Catches all database errors
 - Categorizes error types
 - Returns user-friendly error messages
@@ -137,12 +139,7 @@ async function getDatabaseData(): Promise<DatabaseQueryResult>
 All types are exported from `contracts/types.ts` for use throughout the application:
 
 ```typescript
-export type {
-  TestTableRow,
-  DatabaseQueryResult,
-  DatabaseConfig,
-  DatabaseTableProps,
-};
+export type { TestTableRow, DatabaseQueryResult, DatabaseConfig, DatabaseTableProps };
 ```
 
 ---

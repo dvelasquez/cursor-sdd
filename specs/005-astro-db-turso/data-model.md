@@ -34,11 +34,11 @@ export default defineDb({
 
 **Columns**:
 
-| Column | Type | Constraints | Description |
-|--------|------|------------|-------------|
-| `id` | `number` | Primary Key, Auto-increment | Unique identifier for each row |
-| `name` | `text` | Not null | Test name field |
-| `created_at` | `date` | Default: current timestamp | Record creation timestamp |
+| Column       | Type     | Constraints                 | Description                    |
+| ------------ | -------- | --------------------------- | ------------------------------ |
+| `id`         | `number` | Primary Key, Auto-increment | Unique identifier for each row |
+| `name`       | `text`   | Not null                    | Test name field                |
+| `created_at` | `date`   | Default: current timestamp  | Record creation timestamp      |
 
 **Indexes**: None required for initial testing phase.
 
@@ -164,6 +164,7 @@ const seedData: TestTableRow[] = [
 ```
 
 **Purpose**: Provides sample data to verify:
+
 - Data retrieval works correctly
 - All rows are displayed (SC-003)
 - Data structure is preserved (SC-003)

@@ -111,6 +111,7 @@ src/
 > **Fill ONLY if Constitution Check has violations that must be justified**
 
 No violations detected. All technology choices align with constitution:
+
 - Astro DB is the official Astro database integration (framework-native)
 - Turso is a recommended database provider for Astro DB
 - `getSecret()` from `astro:env/server` is the recommended approach for secrets management in Astro 5.x
