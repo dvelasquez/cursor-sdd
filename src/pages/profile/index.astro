@@ -1,8 +1,78 @@
 ---
 import PrivateLayout from '../../layouts/PrivateLayout.astro';
+import { UserButton } from '@clerk/astro/components';
+
+const { userId } = Astro.locals.auth();
+
+if (!userId) {
+  return Astro.redirect('/sign-in');
+}
+
+const user = await Astro.locals.currentUser();
 ---
 
 <PrivateLayout>
-  <h1>Profile</h1>
-  <p>This is the profile page. It uses PrivateLayout for authenticated users.</p>
+  <div class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold mb-6">Profile</h1>
+
+    {
+      user && (
+        <div class="max-w-2xl mx-auto">
+          <div class="bg-gray-800 rounded-lg p-6 mb-6">
+            <div class="flex items-center justify-between mb-4">
+              <h2 class="text-2xl font-semibold">User Information</h2>
+              <UserButton />
+            </div>
+
+            <div class="space-y-4">
+              <div>
+                <label class="text-sm font-medium text-gray-400">Email</label>
+                <p class="text-white mt-1">
+                  {user.primaryEmailAddress?.emailAddress ||
+                    user.emailAddresses?.[0]?.emailAddress ||
+                    'Not available'}
+                </p>
+              </div>
+
+              {user.firstName && (
+                <div>
+                  <label class="text-sm font-medium text-gray-400">First Name</label>
+                  <p class="text-white mt-1">{user.firstName}</p>
+                </div>
+              )}
+
+              {user.lastName && (
+                <div>
+                  <label class="text-sm font-medium text-gray-400">Last Name</label>
+                  <p class="text-white mt-1">{user.lastName}</p>
+                </div>
+              )}
+
+              {user.firstName || user.lastName ? (
+                <div>
+                  <label class="text-sm font-medium text-gray-400">Full Name</label>
+                  <p class="text-white mt-1">
+                    {[user.firstName, user.lastName].filter(Boolean).join(' ') || 'Not available'}
+                  </p>
+                </div>
+              ) : null}
+
+              {user.imageUrl && (
+                <div>
+                  <label class="text-sm font-medium text-gray-400">Profile Image</label>
+                  <div class="mt-2">
+                    <img src={user.imageUrl} alt="Profile" class="w-24 h-24 rounded-full" />
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+
+          <div class="text-sm text-gray-400">
+            <p>User ID: {user.id}</p>
+          </div>
+        </div>
+      )
+    }
+  </div>
 </PrivateLayout>
