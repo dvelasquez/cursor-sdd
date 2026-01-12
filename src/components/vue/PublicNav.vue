@@ -11,7 +11,8 @@ interface NavItem {
 const navItems: NavItem[] = [
   { label: 'Home', href: '/', icon: 'pi pi-home' },
   { label: 'About', href: '/about', icon: 'pi pi-info-circle' },
-  { label: 'Login', href: '/login', icon: 'pi pi-sign-in' },
+  { label: 'Sign In', href: '/sign-in', icon: 'pi pi-sign-in' },
+  { label: 'Sign Up', href: '/sign-up', icon: 'pi pi-user-plus' },
 ];
 
 const isMobileMenuOpen = ref(false);

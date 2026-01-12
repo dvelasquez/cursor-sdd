@@ -1,4 +1,8 @@
 import { defineConfig, devices } from '@playwright/test';
+import dotenv from 'dotenv';
+
+// Load environment variables from .env file
+dotenv.config();
 
 /**
  * Playwright configuration for E2E testing
@@ -30,22 +34,30 @@ export default defineConfig({
     trace: 'on-first-retry',
   },
 
+  // Web server configuration - automatically start dev server for tests
+  webServer: {
+    command: 'pnpm dev',
+    url: 'http://localhost:4321',
+    reuseExistingServer: !process.env.CI, // Reuse existing server in local dev, always start fresh in CI
+    timeout: 120000, // 2 minutes to start server
+  },
+
   // Browser projects - system-installed browsers
   projects: [
-    {
-      name: 'firefox',
-      use: {
-        ...devices['Desktop Firefox'],
-        channel: 'firefox', // System-installed Firefox (bundled with CachyOS)
-      },
-    },
-    // Optional: Add Chromium if installed via package manager
     // {
-    //   name: 'chromium',
+    //   name: 'firefox',
     //   use: {
-    //     ...devices['Desktop Chrome'],
-    //     channel: 'chromium', // System-installed Chromium (install via: sudo pacman -S chromium)
+    //     ...devices['Desktop Firefox'],
+    //     channel: 'firefox', // System-installed Firefox (bundled with CachyOS)
     //   },
     // },
+    // Optional: Add Chromium if installed via package manager
+    {
+      name: 'chromium',
+      use: {
+        ...devices['Desktop Chrome'],
+        channel: 'chromium', // System-installed Chromium (install via: sudo pacman -S chromium)
+      },
+    },
   ],
 });

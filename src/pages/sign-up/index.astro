@@ -1,0 +1,13 @@
+---
+import PublicLayout from '../../layouts/PublicLayout.astro';
+import { SignUp } from '@clerk/astro/components';
+---
+
+<PublicLayout>
+  <div class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold mb-6">Sign Up</h1>
+    <div class="flex justify-center">
+      <SignUp routing="path" path="/sign-up" signInUrl="/sign-in" />
+    </div>
+  </div>
+</PublicLayout>

@@ -115,6 +115,12 @@ export default [
       playwright: playwrightPlugin,
     },
     ...playwrightPlugin.configs['flat/recommended'],
+    rules: {
+      // Allow conditionals for handling optional UI elements (e.g., email verification)
+      'playwright/no-conditional-in-test': 'off',
+      // Allow empty functions in catch blocks for error suppression
+      '@typescript-eslint/no-empty-function': 'off',
+    },
   },
   // Ignore patterns
   {
@@ -127,6 +133,8 @@ export default [
       '**/*.d.ts',
       // Ignore specs documentation files (markdown) but allow TypeScript test files
       'specs/**/*.md',
+      'playwright-report/',
+      'test-results/',
     ],
   },
 ];

@@ -9,9 +9,11 @@ import node from '@astrojs/node';
 
 import db from '@astrojs/db';
 
+import clerk from '@clerk/astro';
+
 // https://astro.build/config
 export default defineConfig({
-  integrations: [vue({ appEntrypoint: '/src/pages/_app' }), db()],
+  integrations: [vue({ appEntrypoint: '/src/pages/_app' }), db(), clerk()],
 
   vite: {
     plugins: [tailwindcss()],
@@ -33,4 +35,5 @@ export default defineConfig({
   adapter: node({
     mode: 'standalone',
   }),
+  output: 'server',
 });
